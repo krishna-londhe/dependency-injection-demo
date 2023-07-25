@@ -1,29 +1,14 @@
-import { injectable, singleton } from "tsyringe";
+import { autoInjectable } from "tsyringe";
 import { StudentService } from "../service/student.service";
 
-//identify the dependency through constructor parameters and 
-//auto-inject them during the runtime.
-
-// @injectable()
-// export class StudentController {
-//   constructor(private service: StudentService) {
-    
-//   }
-//   display(){
-//     console.log('Calling from Student Controller')
-//     this.service.displayStudent();
-//   }
-// }
-
-////////////////////////////////////////////////////////////
-@singleton()
+@autoInjectable()
 export class StudentController {
-  constructor(private service: StudentService) {
+  constructor(private service?: StudentService) {
     
   }
   display(){
     console.log('Calling from Student Controller')
-    this.service.displayStudent();
+    this.service!.displayStudent();
   }
 }
 
